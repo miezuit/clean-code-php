@@ -1,13 +1,16 @@
 <?php
 namespace video;
 
-class VideoStoreTest extends \PHPUnit\Framework\TestCase {
+use PHPUnit\Framework\TestCase;
 
-    public function testRentalStatementFormat() {
-        $customer = new Customer("John");
-        $customer->addRental(new Rental(new Movie("Star Wars", Movie::NEW_RELEASE), 6));
-        $customer->addRental(new Rental(new Movie("Sofia", Movie::CHILDRENS), 7));
-        $customer->addRental(new Rental(new Movie("Inception", Movie::REGULAR), 5));
+class VideoStoreTest extends TestCase {
+
+    public function testRentalStatementFormat(): void
+    {
+        $customer = new Customer('John');
+        $customer->addRental(new Rental(new Movie('Star Wars', Movie::NEW_RELEASE), 6));
+        $customer->addRental(new Rental(new Movie('Sofia', Movie::CHILDRENS), 7));
+        $customer->addRental(new Rental(new Movie('Inception', Movie::REGULAR), 5));
 
 
         $this->assertEquals(
