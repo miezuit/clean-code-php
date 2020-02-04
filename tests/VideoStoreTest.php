@@ -1,5 +1,5 @@
 <?php
-namespace video;
+namespace victor;
 
 use PHPUnit\Framework\TestCase;
 
