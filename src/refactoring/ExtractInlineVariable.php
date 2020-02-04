@@ -1,7 +1,7 @@
 <?php
 
 
-namespace video\refactoring;
+namespace victor\refactoring;
 
 
 class ExtractInlineVariable
