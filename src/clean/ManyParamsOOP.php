@@ -1,7 +1,7 @@
 <?php
 
 
-namespace video\clean;
+namespace victor\clean;
 
 
 (new ManyParamsOOP(new Validator(new OtherDependency())))->bizLogic([

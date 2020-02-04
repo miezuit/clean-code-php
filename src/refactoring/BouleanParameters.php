@@ -1,7 +1,7 @@
 <?php
 
 
-namespace video\clean;
+namespace victor\refactoring;
 
 $boule = new BouleanParameters();
 $boule->bigUglyMethod(1, 2);
