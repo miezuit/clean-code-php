@@ -3,15 +3,20 @@
 
 namespace victor\refactoring;
 
-class ParameterizeAndExtract {
+class ParameterizeAndExtract
+{
 
-    function f() {
+//    TODO: Extract Var > Extract Func > Inline Var > Replace others with call
+    function f()
+    {
         echo "Logica f\n";
         for ($i = 0; $i < 4; $i++) {
             echo "Cod $i\n";
         }
     }
-    function g() {
+
+    function g()
+    {
         echo "Logica g\n";
         for ($i = 0; $i < 3; $i++) {
             echo "Cod $i\n";
