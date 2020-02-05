@@ -6,6 +6,7 @@ namespace victor\refactoring;
 
 class ExtractInlineVariable
 {
+    //  TODO: touch on split variable
     function computePrice(Order $order): float
     {
         $result = $order->quantity * $order->itemPrice -
