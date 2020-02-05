@@ -7,7 +7,7 @@ namespace victor\refactoring;
 
 class NullObject
 {
-    public function process(?Customer $customer)
+    public static function process(?Customer $customer)
     {
         if ($customer == null) {
             $customerName = "occupant";
@@ -17,13 +17,22 @@ class NullObject
         }
         // ...
     }
-
 }
+
+NullObject::process(new Customer("John Doe"));
+NullObject::process(null);
+
 class Customer
 {
+    private string $name;
+
+    public function __construct(string $name)
+    {
+        $this->name = $name;
+    }
 
     public function getName()
     {
-        return "blah";
+        return $this->name;
     }
 }
