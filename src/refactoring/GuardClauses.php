@@ -32,14 +32,14 @@ class GuardClauses
         return 1;
     }
 
-    private function retiredAmount()
-    {
-        return 2;
-    }
-
     private function separatedAmount()
     {
         return 3;
+    }
+
+    private function retiredAmount()
+    {
+        return 2;
     }
 
     private function normalPayAmount()
