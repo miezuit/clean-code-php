@@ -4,35 +4,37 @@
 namespace victor\refactoring;
 
 
-class MoveStatementsInOutFunction
+function f()
 {
-    function f(Person $person)
-    {
-        $result = [];
-        $result [] = "<p>title: " . $person->photo->title . "</p>";
-        $result += $this->photoData($person->photo);
-        // 50 more lines NOT related to photo
-        return $result;
+    echo "Line1f\n";
+    if ($b) {
+        echo "Line3";
+    } else {
+        echo "Line4";
     }
+    echo "Line5f\n";
+    echo "Line6f\n";
+}
 
-    function photoData(Photo $photo)
-    {
-        return [
-            '<p>location: ' . ${$photo->location} . '</p>',
-            '<p>date: ' . ${$photo->date} . '</p>',
-        ];
+function g()
+{
+    echo "Line1g\n";
+    if ($b) {
+        echo "Line3";
+    } else {
+        echo "Line4";
     }
+    echo "Line5g\n";
+    echo "Line6g\n";
 }
 
-class Person
+function m(): void
 {
-    /** @var Photo */
-    public $photo;
+    echo "Line2\n";
+    echo "Line3\n";
+    echo "Line4\n";
 }
 
-class Photo
-{
-    public $location;
-    public $date;
-    public $title;
-}
+f();
+echo "---\n";
+g();
