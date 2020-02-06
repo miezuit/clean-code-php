@@ -4,22 +4,19 @@
 namespace victor\refactoring\hierarchy;
 
 
-class S {}
-class A {
+abstract class AbstractS {
     private int $x;
+    function m() { echo $this->x;}
+}
+class A extends AbstractS {
     private int $y;
-    function m() {echo $this->x;}
     function n() {}
 }
 
-class B {
-    private int $x;
+class B extends AbstractS {
     private int $y;
-    function m() {echo $this->x;}
 }
-class C {
-    private int $x;
-    function m() {echo $this->x;}
+class C extends AbstractS {
     function n() {}
 }
 
