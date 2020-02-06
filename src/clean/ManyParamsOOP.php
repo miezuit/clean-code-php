@@ -44,6 +44,7 @@ class ManyParamsOOP
 class Validator
 {
     private $dep;
+    private array $errors = [];
 
     public function __construct(OtherDependency $dep)
     {
@@ -53,7 +54,7 @@ class Validator
     public function m1(string $a, int $b): array
     {
         if ($a === '') {
-            return ['a must not be null'];
+            $this->errors[]='a must not be null';
         }
         // stuff
         return [];
