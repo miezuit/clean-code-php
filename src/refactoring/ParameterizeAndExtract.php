@@ -15,6 +15,11 @@ class ParameterizeAndExtract
         }
     }
 
+    function alta()
+    {
+
+    }
+
     function g()
     {
         echo "Logica g\n";
