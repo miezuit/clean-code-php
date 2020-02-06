@@ -15,13 +15,19 @@ class ReplaceTempWithQuery // aka Order Line
         $this->itemPrice = $itemPrice;
     }
 
-
     function computePrice() {
-        $basePrice = $this->quantity * $this->itemPrice;
-        if ($basePrice > 1000)
-            return $basePrice * 0.95;
+        if ($this->calculateBasePrice() > 1000)
+            return $this->calculateBasePrice() * 0.95;
         else
-            return $basePrice * 0.98;
+            return $this->calculateBasePrice() * 0.98;
+    }
+
+    /**
+     * @return float|int
+     */
+    private function calculateBasePrice()
+    {
+        return $this->quantity * $this->itemPrice;
     }
 }
 
