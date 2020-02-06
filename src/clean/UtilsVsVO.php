@@ -11,8 +11,7 @@ class UtilsVsVO
         $result = [];
         /** @var CarModel $model */
         foreach ($models as $model) {
-            $criteriaInterval = new Interval($criteria->getStartYear(), $criteria->getEndYear());
-            if ($model->getYearInterval()->intersects($criteriaInterval)) {
+            if ($model->getYearInterval()->intersects($criteria->getYearInterval())) {
                 $result [] = $model;
             }
         }
@@ -27,6 +26,7 @@ class Interval {
 
     public function __construct(int $start, int $end)
     {
+        if ($start > $end) throw new \Exception("start larger than end");
         $this->start = $start;
         $this->end = $end;
     }
@@ -54,24 +54,15 @@ class MathUtil {
 
 class CarSearchCriteria
 {
-    private $startYear;
-    private $endYear;
+    private $yearInterval;
 
     public function __construct(int $startYear, int $endYear)
     {
-        if ($startYear > $endYear) throw new \Exception("start larger than end");
-        $this->startYear = $startYear;
-        $this->endYear = $endYear;
+        $this->yearInterval = new Interval($startYear, $endYear);
     }
-
-    public function getStartYear(): int
+    public function getYearInterval(): Interval
     {
-        return $this->startYear;
-    }
-
-    public function getEndYear(): int
-    {
-        return $this->endYear;
+        return $this->yearInterval;
     }
 }
 
@@ -80,30 +71,20 @@ class CarModel
 {
     private $make;
     private $model;
-    private $startYear;
-    private $endYear;
+    private $yearInterval;
 
     public function __construct(int $startYear, int $endYear, string $model, string $make)
     {
         if ($startYear > $endYear) throw new \Exception("start larger than end");
-        $this->startYear = $startYear;
-        $this->endYear = $endYear;
+        $this->yearInterval = new Interval($startYear, $endYear);
+
         $this->model = $model;
         $this->make = $make;
     }
 
     public function getYearInterval(): Interval
     {
-        return new Interval($this->startYear, $this->endYear);
+        return $this->yearInterval;
     }
 
-    public function getStartYear(): int
-    {
-        return $this->startYear;
-    }
-
-    public function getEndYear(): int
-    {
-        return $this->endYear;
-    }
 }
