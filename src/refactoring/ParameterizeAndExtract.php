@@ -10,22 +10,29 @@ class ParameterizeAndExtract
     function f()
     {
         echo "Logica f\n";
-        for ($i = 0; $i < 4; $i++) {
-            echo "Cod $i\n";
-        }
+        $this->m(4);
     }
 
     function g()
     {
         echo "Logica g\n";
-        for ($i = 0; $i < 3; $i++) {
-            echo "Cod $i\n";
-        }
+        $this->m(3);
     }
 
     function alta()
     {
 
+    }
+
+    /**
+     * @param int $n
+     */
+    public function m(int $n): void
+    {
+        for ($i = 0; $i < $n; $i++) {
+
+            echo "Cod $i\n";
+        }
     }
 
 }

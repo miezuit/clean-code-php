@@ -3,69 +3,92 @@
 
 namespace victor\clean;
 
+class FullName {
+    private string $firstName;
+    private string $lastName;
 
-class ManyParamsVO
-{
-    public function placeOrder(string $fname, string $lname, string $city, string $streetName, int $streetNumber)
+    public function __construct(string $firstName, string $lastName)
     {
-        if ($fname === '' || $lname === '') {
+        if ($firstName === '' || $lastName === '') {
             throw new \Exception();
         }
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+    }
+
+    public function seMarita(string $numeleSotului): FullName
+    {
+        return new static($this->firstName, $numeleSotului);
+    }
+
+    public function format(): string
+    {
+        return $this->firstName . ' ' . strtoupper($this->lastName);
+    }
+}
+class Address {
+    private string $city;
+    private string $streetName;
+    private int $streetNumber;
+
+    public function __construct(string $city, string $streetName, int $streetNumber)
+    {
+        $this->city = $city;
+        $this->streetName = $streetName;
+        $this->streetNumber = $streetNumber;
+    }
+
+}
+class ManyParamsVO
+{
+    public function placeOrder(FullName $fullName, Address $address)
+    {
         echo "Some logic \n";
     }
 }
 
-(new ManyParamsVO())->placeOrder('John', 'Doe', 'St. Albergue', 'Paris', 99);
+$fullName = new FullName('John', 'Doe');
+$address = new Address('St. Albergue', 'Paris', 99);
+(new ManyParamsVO())->placeOrder($fullName, $address);
 
 class AnotherClass {
-    public function otherMethod(string $firstName, string $lastName, int $x) {
-    	if ($firstName === '' || $lastName === null) throw new \Exception();
-
+    public function otherMethod(FullName $fullName, int $x) {
     	echo "Another distant Logic";
     }
 }
 
+// pachetul entity
 class Person {
     private $id;
-    private $firstName;
-    private $lastName;
+    private FullName $fullName;
     private $phone;
 
     public function __construct(string $firstName, string $lastName)
     {
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        if ($firstName === '' || $lastName === '') throw new \Exception();
+        $this->fullName = new FullName($firstName, $lastName);
     }
 
-    public function getFirstName(): string
+    public function getFullName(): FullName
     {
-        return $this->firstName;
+        return $this->fullName;
     }
 
-    public function setFirstName(string $firstName): void
-    {
-        $this->firstName = $firstName;
-    }
 
-    public function getLastName(): string
-    {
-        return $this->lastName;
-    }
-
+    //level 2
     public function setLastName(string $lastName): void
     {
-        $this->lastName = $lastName;
+        $this->fullName = $this->fullName->seMarita($lastName);
     }
 
 }
 
 class PersonService {
     public function f(Person $person) {
-        $fullName = $person->getFirstName() . ' ' . strtoupper($person->getLastName());
+        $fullName = $person->getFullName()->format();
         echo $fullName;
     }
     public function p(string $city, string $streetName, int $streetNumber) {
         echo "Living in " . $city . " on St. " . $streetName . " " . $streetNumber;
     }
+
 }
