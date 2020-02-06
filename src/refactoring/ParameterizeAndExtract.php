@@ -15,17 +15,17 @@ class ParameterizeAndExtract
         }
     }
 
-    function alta()
-    {
-
-    }
-
     function g()
     {
         echo "Logica g\n";
         for ($i = 0; $i < 3; $i++) {
             echo "Cod $i\n";
         }
+    }
+
+    function alta()
+    {
+
     }
 
 }
