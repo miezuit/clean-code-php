@@ -10,9 +10,9 @@ class SplitVariable
 {
     function discount($inputValue, $quantity)
     {
-        if ($inputValue > 50) $inputValue = $inputValue - 2;
-        if ($quantity > 100) $inputValue = $inputValue - 1;
-        return $inputValue;
+        $valueDiscount = $inputValue > 50 ? 2 : 0;
+        $volumeDiscount = $quantity > 100 ? 1 : 0;
+        return $inputValue - $valueDiscount - $volumeDiscount;
     }
 
 }
