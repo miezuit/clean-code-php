@@ -11,9 +11,8 @@ class UtilsVsVO
         $result = [];
         /** @var CarModel $model */
         foreach ($models as $model) {
-            $modelInterval = new Interval($model->getStartYear(), $model->getEndYear());
             $criteriaInterval = new Interval($criteria->getStartYear(), $criteria->getEndYear());
-            if ($modelInterval->intersects($criteriaInterval)) {
+            if ($model->getYearInterval()->intersects($criteriaInterval)) {
                 $result [] = $model;
             }
         }
@@ -91,6 +90,11 @@ class CarModel
         $this->endYear = $endYear;
         $this->model = $model;
         $this->make = $make;
+    }
+
+    public function getYearInterval(): Interval
+    {
+        return new Interval($this->startYear, $this->endYear);
     }
 
     public function getStartYear(): int
