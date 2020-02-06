@@ -19,14 +19,37 @@ class CombineFunctionsIntoTransform
 
     public function generateTicket(Ticket $ticket)
     {
-        $invoice = "Invoice for " . $ticket->getCustomerName() . "\n";
+        $ticketView = $this->createView($ticket);
+        return $this->renderTicket($ticketView);
+    }
 
-        $invoice .= "QR Code: " . self::generateQRCode($ticket->getCode()) . "\n";
-        $invoice .= "Address: " . self::getAddress($ticket->getEventId()) . "\n";
+    public function createView(Ticket $ticket): TicketView // "Transform function"
+    {
+        $ticketView = new TicketView($ticket);
+        $ticketView->qrCode = self::generateQRCode($ticket->getCode());
+        $ticketView->address = self::getAddress($ticket->getEventId());
+        return $ticketView;
+    }
+
+    public function renderTicket(TicketView $ticketView): string
+    {
+        $invoice = "Invoice for " . $ticketView->ticket->getCustomerName() . "\n";
+        $invoice .= "QR Code: " . $ticketView->qrCode . "\n";
+        $invoice .= "Address: " . $ticketView->address . "\n";
         $invoice .= "Please arrive 20 minutes before the start of the event\n";
         $invoice .= "In case of emergency, call 0899898989\n";
         return $invoice;
     }
+}
+class TicketView {
+    public Ticket $ticket;
+    public string $qrCode;
+    public string $address;
+    public function __construct(Ticket $ticket)
+    {
+        $this->ticket = $ticket;
+    }
+
 }
 
 // ----- SUPPORTING, DUMMY CODE ------
