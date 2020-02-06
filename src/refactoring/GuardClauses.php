@@ -12,19 +12,17 @@ class GuardClauses
 
     function getPayAmount()
     {
-        if ($this->isDead)
-            $result = $this->deadAmount();
-        else {
-            if ($this->isSeparated)
-                $result = $this->separatedAmount();
-            else {
-                if ($this->isRetired)
-                    $result = $this->retiredAmount();
-                else
-                    $result = $this->normalPayAmount();
-            }
+        if ($this->isDead) {
+            return $this->deadAmount();
         }
-        return $result;
+        if ($this->isSeparated) {
+            return $this->separatedAmount();
+        }
+        if ($this->isRetired) {
+            return $this->retiredAmount();
+        } else {
+            return $this->normalPayAmount();
+        }
     }
 
     private function deadAmount()

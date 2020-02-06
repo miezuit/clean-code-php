@@ -75,7 +75,6 @@ class CarModel
 
     public function __construct(int $startYear, int $endYear, string $model, string $make)
     {
-        if ($startYear > $endYear) throw new \Exception("start larger than end");
         $this->yearInterval = new Interval($startYear, $endYear);
 
         $this->model = $model;
