@@ -27,6 +27,7 @@ class Rectangle {
 
     function area(): int
     {
+        //50 de linii de cod de biz de feed processing peste SHA512 + sjdakj
         return $this->width * $this->height;
     }
 
@@ -36,26 +37,37 @@ class Rectangle {
     }
 }
 
-class Square extends Rectangle { // TODO
-    public function setHeight(int $h): void
+class Square { // TODO
+    private Rectangle $rectangle;
+    public function __construct()
     {
-        parent::setWidth($h);
-        parent::setHeight($h);
+        $this->rectangle = new Rectangle();
     }
-    public function setWidth(int $w): void
+
+    public function setEdge(int $e): void
     {
-        parent::setWidth($w);
-        parent::setHeight($w);
+        $this->rectangle->setWidth($e);
+        $this->rectangle->setHeight($e);
+    }
+
+    public function area(): int
+    {
+        return $this->rectangle->area();
     }
 }
 
 // TODO area of a square
 m(new Rectangle());
-m(new Square());
+m2(new Square());
 
 function m(Rectangle $rectangle)
 {
     $rectangle->setHeight(2);
     $rectangle->setWidth(3);
     echo $rectangle->area() . "\n";
+}
+function m2(Square $s)
+{
+    $s->setEdge(2);
+    echo $s->area() . "\n";
 }
