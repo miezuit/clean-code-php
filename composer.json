@@ -1,12 +1,12 @@
 {
-  "name": "jvalduvieco/videostore",
-  "description": "PHP port of videostore Uncle bob's example",
+  "name": "victor/refactoring",
+  "description": "Clean Code Training by Victor Rentea",
   "minimum-stability": "stable",
   "license": "proprietary",
   "authors": [
     {
-      "name": "Someone",
-      "email": "nono@none.com"
+      "name": "Victor Rentea",
+      "email": "victorrentea@gmail.com"
     }
   ],
   "require": {},
@@ -17,6 +17,7 @@
 
   },
   "require-dev": {
-    "phpunit/phpunit": "5.6.*"
+    "phpunit/phpunit": "8.*"
   }
 }
+
