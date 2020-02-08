@@ -8,15 +8,22 @@ class ExtractMethodObject
 {
     function search(array $criteria): array
     {
-        $queryBuilder = new ParentSearchQueryBuilder($criteria);
+        $params = [];
+        $dql = "SELECT p.id FROM Parent ON  WHERE 1=1   ";
 
-        $queryBuilder->execute();
+        if (isset($criteria['name'])) {
+            $dql .= '    AND p.name = ?    ';
+            $params[] = $criteria['name'];
+        }
 
-        $dql = $queryBuilder->getDql();
+        if (isset($criteria['caregory'])) {
+            $dql .= ' AND p.category = ? ';
+            $params[] = $criteria['category'];
+        }
 
         echo "Create query $dql\n";
-        foreach ($queryBuilder->getParams() as $param) {
-            echo "Set param '$param'=" . $queryBuilder->getParams()[$param];
+        foreach ($params as $param) {
+            echo "Set param '$param'=" . $params[$param];
         }
     }
 }

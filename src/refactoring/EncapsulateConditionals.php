@@ -10,10 +10,10 @@ class EncapsulateConditionals
     // TODO move method
     public function getQuote(\DateTime $dateTime, RatesPlan $plan, int $quantity, float $clientFidelityFactor): float
     {
-        if ($plan->isSummer($dateTime))
-            $charge = $plan->computeSummerPlan($quantity);
+        if ((!$dateTime < $plan->summerStart) && !$dateTime > $plan->summerEnd)
+            $charge = $quantity * $plan->summerRate;
         else
-            $charge = $plan->computeExtraSeasonCharge($quantity);
+            $charge = $quantity * $plan->regularRate + $plan->regularServiceCharge;
         return $charge - $clientFidelityFactor;
     }
 
@@ -34,20 +34,4 @@ class RatesPlan {
     public $regularRate;
     public $regularServiceCharge;
     public $summerEnd;
-
-    public function isSummer(\DateTime $dateTime): bool
-    {
-        return (!$dateTime < $this->summerStart)
-            && !$dateTime > $this->summerEnd;
-    }
-
-    public function computeSummerPlan(int $quantity): float
-    {
-        return $quantity * $this->summerRate;
-    }
-
-    public function computeExtraSeasonCharge(int $quantity)
-    {
-        return $quantity * $this->regularRate + $this->regularServiceCharge;
-    }
 }

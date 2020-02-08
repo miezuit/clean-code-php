@@ -1,5 +1,5 @@
 <?php
-namespace victor;
+namespace victor\refactoring\videostore;
 
 use PHPUnit\Framework\TestCase;
 

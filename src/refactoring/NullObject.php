@@ -7,38 +7,23 @@ namespace victor\refactoring;
 
 class NullObject
 {
-    public static function process(ICustomer $customer)
+    public function process(?Customer $customer)
     {
-
-        // x 7 locuri:
-        $customerName = $customer->getName();
+        if ($customer == null) {
+            $customerName = "occupant";
+        }
+        else {
+            $customerName = $customer->getName();
+        }
         // ...
     }
-}
 
-NullObject::process(new Customer("John Doe"));
-NullObject::process(new MissingCustomer());
-
-interface ICustomer {
-    public function getName();
 }
-class MissingCustomer implements ICustomer {
-    public function getName()
-    {
-        return "occupant";
-    }
-}
-class Customer implements ICustomer
+class Customer
 {
-    private string $name;
-
-    public function __construct(string $name)
-    {
-        $this->name = $name;
-    }
 
     public function getName()
     {
-        return $this->name;
+        return "blah";
     }
 }

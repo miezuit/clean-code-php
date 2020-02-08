@@ -20,14 +20,13 @@ class Rectangle {
     {
         return $this->height;
     }
-    public function setHeight(int $h): void
+    public function setHeight(int $height): void
     {
-        $this->height = $h;
+        $this->height = $height;
     }
 
     function area(): int
     {
-        //50 de linii de cod de biz de feed processing peste SHA512 + sjdakj
         return $this->width * $this->height;
     }
 
@@ -38,36 +37,8 @@ class Rectangle {
 }
 
 class Square { // TODO
-    private Rectangle $rectangle;
-    public function __construct()
-    {
-        $this->rectangle = new Rectangle();
-    }
 
-    public function setEdge(int $e): void
-    {
-        $this->rectangle->setWidth($e);
-        $this->rectangle->setHeight($e);
-    }
-
-    public function area(): int
-    {
-        return $this->rectangle->area();
-    }
 }
 
 // TODO area of a square
-m(new Rectangle());
-m2(new Square());
 
-function m(Rectangle $rectangle)
-{
-    $rectangle->setHeight(2);
-    $rectangle->setWidth(3);
-    echo $rectangle->area() . "\n";
-}
-function m2(Square $s)
-{
-    $s->setEdge(2);
-    echo $s->area() . "\n";
-}
