@@ -17,24 +17,10 @@ $boule->bigUglyMethod323(1, 2);
 class BouleanParameters
 {
 
-    function bigUglyMethod(int $a, int $b) {
-        $this->beforeLogic();
-        $this->afterLogic();
-    }
-
-    function bigUglyMethod323(int $a, int $b) {
-        $this->beforeLogic();
-        echo "Logica Mea pt UC323\n";
-        $this->afterLogic();
-    }
-
-
-
-    private function afterLogic(): void
+    function bigUglyMethod(int $a, int $b)
     {
-        echo "More Complex Logic\n";
-        echo "More Complex Logic\n";
-        echo "More Complex Logic\n";
+        $this->beforeLogic();
+        $this->afterLogic();
     }
 
     private function beforeLogic(): void
@@ -44,38 +30,56 @@ class BouleanParameters
         echo "Complex Logic\n";
     }
 
+    private function afterLogic(): void
+    {
+        echo "More Complex Logic\n";
+        echo "More Complex Logic\n";
+        echo "More Complex Logic\n";
+    }
 
-
-
-
-
-
-
-
-
-
+    function bigUglyMethod323(int $a, int $b)
+    {
+        $this->beforeLogic();
+        echo "Logica Mea pt UC323\n";
+        $this->afterLogic();
+    }
 
 
     // ============== "BOSS" LEVEL: A lot harder to break down =================
 
-	function bossLevel(bool $stuff, bool $fluff, array $tasks) {
+    function bossLevelStuffFluff(array $tasks)
+    {
+        echo "Logic1\n";
+        echo "Logic2\n";
+        echo "Logic3\n";
+
+        foreach ($tasks as $task) {
+            echo "Logic4 " . $task . "\n";
+        }
+        foreach ($tasks as $task) {
+            // TODO HERE, when call this method, I want MY own custom code to run here
+            echo "Extra Logic " . $task . "\n";
+        }
         $i = 0;
-		$j = 1;
-		echo "Logic1\n";
-		if ($stuff) {
-            echo "Logic2\n";
-            if ($fluff) {
-                echo "Logic3\n";
-                foreach ($tasks as $task) {
-                    $i++;
-                    echo "Logic4 " . $task . "\n";
-                    // TODO HERE, when call this method, I want MY own custom code to run here
-                    echo "Logic5 " . $i . "\n";
-                }
-				echo "Logic6 " . ($j++) . "\n";
-			}
-		}
-		echo "Logic7\n";
-	}
+        foreach ($tasks as $task) {
+            $i++;
+            echo "Logic5 " . $i . "\n";
+        }
+        echo "Logic6 " . 1 . "\n";
+        echo "Logic7\n";
+    }
+
+    function bossLevelStuffNoFluff()
+    {
+        echo "Logic1\n";
+        echo "Logic2\n";
+        echo "Logic7\n";
+    }
+
+    function bossLevelNoStuff()
+    {
+        echo "Logic1\n";
+        echo "Logic7\n";
+    }
 
 }
