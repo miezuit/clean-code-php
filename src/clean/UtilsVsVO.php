@@ -11,7 +11,7 @@ class UtilsVsVO
         $result = [];
         /** @var CarModel $model */
         foreach ($models as $model) {
-            if ($this->intervalsIntersect(
+            if (MathUtil::intervalsIntersect(
                 $model->getStartYear(), $model->getEndYear(),
                 $criteria->getStartYear(), $criteria->getEndYear())) {
 
@@ -20,9 +20,11 @@ class UtilsVsVO
         }
         return $result;
     }
+}
 
-    // http://world.std.com/~swmcd/steven/tech/interval.html
-    private function intervalsIntersect(int $start1, int $end1, int $start2, int $end2): bool
+class MathUtil {
+
+    public static function intervalsIntersect(int $start1, int $end1, int $start2, int $end2): bool
     {
         return $start1 <= $end2 && $start2 <= $end1;
     }
