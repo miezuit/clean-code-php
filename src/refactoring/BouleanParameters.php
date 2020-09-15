@@ -4,30 +4,44 @@
 namespace victor\refactoring;
 
 $boule = new BouleanParameters();
-$boule->bigUglyMethod(1, 2, false);
-$boule->bigUglyMethod(1, 2, false);
-$boule->bigUglyMethod(1, 2, false);
-$boule->bigUglyMethod(1, 2, false);
-$boule->bigUglyMethod(1, 2, false);
+$boule->bigUglyMethod(1, 2);
+$boule->bigUglyMethod(1, 2);
+$boule->bigUglyMethod(1, 2);
+$boule->bigUglyMethod(1, 2);
+$boule->bigUglyMethod(1, 2);
 
 // TODO From my use-case, I call it too, to do more within:
-$boule->bigUglyMethod(1, 2, true);
+$boule->bigUglyMethod323(1, 2);
+
 
 class BouleanParameters
 {
 
-	function bigUglyMethod(int $a, int $b, bool $cr323) {
-        echo "Complex Logic\n";
-        echo "Complex Logic\n";
-        echo "Complex Logic\n";
+    function bigUglyMethod(int $a, int $b) {
+        $this->beforeLogic();
+        $this->afterLogic();
+    }
 
-        if ($cr323) {
-            echo "Logica Mea pt UC323\n";
-        }
+    function bigUglyMethod323(int $a, int $b) {
+        $this->beforeLogic();
+        echo "Logica Mea pt UC323\n";
+        $this->afterLogic();
+    }
 
+
+
+    private function afterLogic(): void
+    {
         echo "More Complex Logic\n";
         echo "More Complex Logic\n";
         echo "More Complex Logic\n";
+    }
+
+    private function beforeLogic(): void
+    {
+        echo "Complex Logic\n";
+        echo "Complex Logic\n";
+        echo "Complex Logic\n";
     }
 
 
@@ -40,7 +54,9 @@ class BouleanParameters
 
 
 
-	// ============== "BOSS" LEVEL: A lot harder to break down =================
+
+
+    // ============== "BOSS" LEVEL: A lot harder to break down =================
 
 	function bossLevel(bool $stuff, bool $fluff, array $tasks) {
         $i = 0;
@@ -61,4 +77,5 @@ class BouleanParameters
 		}
 		echo "Logic7\n";
 	}
+
 }
