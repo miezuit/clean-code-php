@@ -22,6 +22,33 @@ class UtilsVsVO
     }
 }
 
+class Interval { // value object
+    private int $start;
+    private int $end;
+
+    public function __construct(int $start, int $end)
+    {
+        $this->start = $start;
+        $this->end = $end;
+    }
+    public function getEnd(): int
+    {
+        return $this->end;
+    }
+    public function getStart(): int
+    {
+        return $this->start;
+    }
+
+    public function equals(Interval $other): bool
+    {
+        return $this->start == $other->start && $this->end == $other->end;
+    }
+}
+
+
+//var_dump((new Interval(1,2))->equals(new Interval(1,3)));
+
 class MathUtil {
 
     public static function intervalsIntersect(int $start1, int $end1, int $start2, int $end2): bool
