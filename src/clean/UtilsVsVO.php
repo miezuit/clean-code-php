@@ -46,17 +46,19 @@ class Interval { // value object
         $this->end = $end;
     }
 
-    public function getEnd(): int
-    {
-        return $this->end;
-    }
-    public function getStart(): int
-    {
-        return $this->start;
-    }
+//    public function getEnd(): int
+//    {
+//        return $this->end;
+//    }
+//    public function getStart(): int
+//    {
+//        return $this->start;
+//    }
 
     public function __toString()
     {
+
+        // TODO aaa
         return "Interval[$this->start, $this->end]";
     }
 
@@ -111,10 +113,7 @@ class B {
         $this->x = $x;
     }
 
-    public function getX(): int
-    {
-        return $this->x;
-    }
+
 }
 
 $arr = [1,2];
@@ -127,6 +126,7 @@ $arr[1]=5;
 var_dump($i->getList());
 var_dump($arr);
 
+//var_dump($i->getB()->x);
 
 //var_dump((new Interval(1,2))->equals(new Interval(1,3)));
 

@@ -19,12 +19,14 @@ class BouleanParameters
 
     function bigUglyMethod(int $a, int $b)
     {
+        // FIXME sss
         $this->beforeLogic();
         $this->afterLogic();
     }
 
     private function beforeLogic(): void
     {
+
         echo "Complex Logic\n";
         echo "Complex Logic\n";
         echo "Complex Logic\n";
