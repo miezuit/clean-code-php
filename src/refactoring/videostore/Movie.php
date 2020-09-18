@@ -3,9 +3,9 @@ namespace victor\refactoring\videostore;
 
 class Movie
 {
-    public const NEW_RELEASE = "NEW_RELEASE";
-    public const REGULAR = "REGULAR";
-    public const CHILDREN = "CHILDRENS";
+    public const PRICE_CODE_NEW_RELEASE = "NEW_RELEASE";
+    public const PRICE_CODE_REGULAR = "REGULAR";
+    public const PRICE_CODE_CHILDREN = "CHILDRENS";
 
     private string $title;
 
