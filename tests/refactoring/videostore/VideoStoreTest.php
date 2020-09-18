@@ -9,7 +9,7 @@ class VideoStoreTest extends TestCase {
     {
         $customer = new Customer('John');
         $customer->addRental(new Rental(new Movie('Star Wars', Movie::NEW_RELEASE), 6));
-        $customer->addRental(new Rental(new Movie('Sofia', Movie::CHILDRENS), 7));
+        $customer->addRental(new Rental(new Movie('Sofia', Movie::CHILDREN), 7));
         $customer->addRental(new Rental(new Movie('Inception', Movie::REGULAR), 5));
 
 

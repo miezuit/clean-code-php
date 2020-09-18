@@ -1,0 +1,1 @@
+C:37:"PHPUnit\Runner\DefaultTestResultCache":218:{a:2:{s:7:"defects";a:0:{}s:5:"times";a:2:{s:71:"victor\refactoring\gildedrose\GildedRoseTest::testRentalStatementFormat";d:0.148;s:71:"victor\refactoring\videostore\VideoStoreTest::testRentalStatementFormat";d:0.073;}}}

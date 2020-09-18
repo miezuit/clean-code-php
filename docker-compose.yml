@@ -1,0 +1,8 @@
+version: '3.7'
+services:
+  refactoring:
+    container_name: refactoring
+    image: nexus.avancart.local:80/php74_core_devtools:v0
+    volumes:
+      - .:/var/www/html:delegated
+

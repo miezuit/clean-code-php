@@ -1,51 +1,27 @@
 <?php
+
 namespace victor\refactoring\videostore;
 
 class Rental
 {
-    /**
-     * @var Movie
-     */
-    private $movie;
-    private $daysRented;
+    private Movie $movie;
 
-    /**
-     * Rental constructor.
-     * @param Movie $movie
-     * @param $daysRented
-     */
-    public function __construct(Movie $movie, $daysRented)
+    private int $daysRented;
+
+    public function __construct(Movie $movie, int $daysRented)
     {
         $this->movie = $movie;
         $this->daysRented = $daysRented;
     }
 
-
-    /**
-     * @return int
-     */
-    public function getDaysRented()
+    public function getDaysRented(): int
     {
         return $this->daysRented;
     }
 
-    /**
-     * @param int $daysRented
-     */
-    public function setDaysRented($daysRented)
-    {
-        $this->daysRented = $daysRented;
-    }
-
-    /**
-     * @return Movie
-     */
-    public function getMovie()
+    public function getMovie(): Movie
     {
         return $this->movie;
     }
-
-
-
 
 }
